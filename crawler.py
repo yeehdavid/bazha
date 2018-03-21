@@ -97,6 +97,7 @@ if __name__ == '__main__':
     while True:
         try:
             test_new()
-        except:
+        except Exception as e:
+            print(e)
             pass
         time.sleep(60)
