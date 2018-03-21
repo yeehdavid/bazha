@@ -143,6 +143,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #MEDIA_URL = '/Main/static/' # URL的映射，前后要加上‘/’ 表示从根目录开始，比如“/site_media/”，加上这个属性之后，静态文件的链接前面会加上这个值可以随便写但不能不写
 MEDIA_ROOT = 'Main/static/Main/img/'# 文件上传的根路径
