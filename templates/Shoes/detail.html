@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+<div class="container-fluid" style="margin-top: 75px">
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6" style="padding-right:0px; padding-left:0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6" style="margin-top:14px;">
+                        <a href="/tea/{{tea.id}}">
+                            <img src="{% static 'Main/img/'%}{{tea.img_title}}"
+                                 class="img-responsive center-block img-rounded">
+                        </a>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 15px">
+                        <form action="  {% url  'order:post_order' tea.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="{{ form.name.id_for_label }}">姓名：</label>
+                                        <input placeholder="姓名" type="text" id="id_name" name="name"
+                                               class="form-control"
+                                               style="width:100px; "/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="{{ form.tel.id_for_label }}">电话：</label>
+
+                                        <input placeholder="输入您的手机" type="text" id="id_tel" name="tel"
+                                               class="form-control"
+                                               style="width:196px;"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="{{ form.address.id_for_label }}">收货地址：</label>
+                                <span class="label label-success">货到付款</span>
+                                <span class="label label-success">开包验货</span>
+                                <span class="label label-success">全场包邮</span>
+                                <input placeholder="输入您的收货地址" type="text" id="id_address" name="address"
+                                       class="form-control"/>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-danger">提交订单</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row" style="margin-top:25px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <div class="media">
+
+                <div class="media-body">
+                    <h4 class="media-heading" style="margin-top:4px;"><strong>抢购描述:</strong></h4>
+
+                    <h5 style="margin-top:10px;"><strong>{{tea.name}}，{{tea.desc}}</strong></h5>
+
+                    <p style="color:#b31800;">特别提醒:货到付款，支持开包验货，满意后再付款，支持七天无理由退换货！</p>
+
+                    <p style="color:#b31800;">特别提醒：因部分客户所提交订单信息不全 所以我们会在24小时内给尊贵你的致电核实订单 请亲一定要高抬贵手接听下电话 谢谢！！！</p>
+
+                    <p style="color:#b31800;">支持拆包验货如遇部分快递小哥不让拆包还需亲及时联系我们来解决！ </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    {% if tea.img0 %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img0}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img1 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img1}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img2 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img2}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img3 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img3}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img4 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img4}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img5 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img5}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img7 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img6}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+    {% if tea.img7 %}
+    <div class="row" style="margin-top:3px">
+        <div class="col-md-2"></div>
+        <div class="col-md-6">
+            <a href="/tea/{{tea.id}}">
+                <img src="{% static 'Main/img/'%}{{tea.img7}}" class="img-rounded img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock main %}

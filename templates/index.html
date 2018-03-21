@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="container-fluid" style="margin-top:75px;">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            {% if first_one %}
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <a href="/news/{{first_one.pk}}"><img src="{% static 'Main/img/'%}{{first_one.title_img}}"
+                                                              height="100%" width="100%" class="img-rounded"
+                                                              alt="..."></a>
+                        <div class="carousel-caption">
+                            <h4>{{first_one.title}}</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="/news/{{second_one.pk}}"><img src="{% static 'Main/img/'%}{{second_one.title_img}}"
+                                                              height="100%" width="100%" class="img-rounded"
+                                                              alt="..."></a>
+                        <div class="carousel-caption">
+                            <h4>{{second_one.title}}</h4>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <a href="/news/{{third_one.pk}}"><img src="{% static 'Main/img/'%}{{third_one.title_img}}"
+                                                              height="100%" width="100%" class="img-rounded"
+                                                              alt="..."></a>
+                        <div class="carousel-caption">
+                            <h4>{{third_one.title}}</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                   data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-1"><a style="position:fixed;"></a></div>
+    </div>
+
+    <div class="row" style="margin-top:15px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            {% for article in article_list %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="thumbnail">
+                        <a href="/news/{{ article.pk}}"><img src="{% static 'Main/img/'%}{{article.title_img}}"
+
+                                                             alt="..."></a>
+                        <div class="caption">
+                            <h4><a href="/news/{{ article.pk}}">{{flag}}{{article.title}}</a></h4>
+
+                            <span class="label label-info">{{article.created_time}}</span>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            <nav aria-label="...">
+                <ul class="pager">
+                    {% if article_list.has_previous %}
+                    <li><a href="?page={{article_list.previous_page_number}}">&larr; Newer</a></li>
+                    {% else %}
+                    <li class="disabled"><a href="#">&larr; Newer</a></li>
+                    {% endif %}
+                    {% if article_list.has_next %}
+                    <li><a href="?page={{article_list.next_page_number}}">Older &rarr;</a></li>
+                    {% else %}
+                    <li class="disabled"><a href="#">Older &rarr;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-1"></div>
+
+    </div>
+</div>
+
+{% endblock main %}

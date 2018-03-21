@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+<div class="container-fluid" style="margin-top:75px;">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{a.title}}</h3>
+                </div>
+                <div class="panel-body">
+                    <p><span class="label label-info" >{{a.created_time}}</span>
+                    {% for p in a_p %}
+                    {% if p.img %}
+                    <img src="{% static 'Main/img/' %}{{p.img}}" class="img-responsive img-rounded" style="margin-top:15px;">
+                    {% else %}
+                    <p style="margin-top:15px;">{{p.text}}</p>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+{% endblock main %}

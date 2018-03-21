@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-7">
+        <div class="container-fluid" style="margin-top:75px;">
+            <div class="row">
+
+                {% for shoe in shoes %}
+                <div class="col-xs-6 col-md-4">
+                    <div class="thumbnail">
+                        <a href='/shoes/{{shoe.pk}}' target="_blank"><img src="{% static 'Main/img/'%}{{shoe.img_title}}"></a>
+                        <div class="caption">
+                            <p style="text-align:center;">{{shoe.name}}</p>
+                            <h4 style="text-align:center;color:red;">{{shoe.price}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <nav aria-label="...">
+                <ul class="pager">
+                    {% if article_list.has_previous %}
+                    <li><a href="?page={{article_list.previous_page_number}}">&larr; Newer</a></li>
+                    {% else %}
+                    <li class="disabled"><a href="#">&larr; Newer</a></li>
+                    {% endif %}
+                    {% if article_list.has_next %}
+                    <li><a href="?page={{article_list.next_page_number}}">Older &rarr;</a></li>
+                    {% else %}
+                    <li class="disabled"><a href="#">Older &rarr;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-1"><a style="position:fixed;"></a></div>
+    </div>
+</div>
+
+{% endblock main %}
