@@ -13,7 +13,7 @@ from News.models import Article, Article_Part
 #last_title = ''
 
 def chinese_to_gb2312(chinese):
-    s = str(chinese.encode('gb2312')).replace('\\x', '')
+    s = str(chinese.encode('gb18030')).replace('\\x', '')
     return s.replace("'", '')[1:].upper()
 
 def cht_to_chs(line):
