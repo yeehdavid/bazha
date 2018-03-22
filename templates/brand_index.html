@@ -12,7 +12,7 @@
                 {% for shoe in shoes %}
                 <div class="col-xs-6 col-md-4">
                     <div class="thumbnail">
-                        <a href='/shoes/{{shoe.pk}}' target="_blank"><img src="{% static 'Main/img/'%}{{shoe.img_title}}"></a>
+                        <a href='/shoes/{{shoe.pk}}' target="_blank"><img src="{% static 'img/'%}{{shoe.img_title}}"></a>
                         <div class="caption">
                             <p style="text-align:center;">{{shoe.name}}</p>
                             <h4 style="text-align:center;color:red;">{{shoe.price}}</h4>

@@ -24,7 +24,7 @@ def cht_to_chs(line):
 def save_img(src,name):
     ir = requests.get(src)
     if ir.status_code == 200:
-        open('Main/static/Main/img/News/' + name + '.jpg', 'wb').write(ir.content)
+        open('static/img/News/' + name + '.jpg', 'wb').write(ir.content)
     else:
         return 0
     return 1
