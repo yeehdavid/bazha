@@ -28,8 +28,8 @@
                     </div>
                     <div class="item">
                         <a href="/news/{{second_one.pk}}"><img src="{% static 'img/'%}{{second_one.title_img}}"
-                                                              height="100%" width="100%" class="img-rounded"
-                                                              alt="..."></a>
+                                                               height="100%" width="100%" class="img-rounded"
+                                                               alt="..."></a>
                         <div class="carousel-caption">
                             <h4>{{second_one.title}}</h4>
                         </div>
@@ -63,17 +63,17 @@
 
     <div class="row" style="margin-top:15px;">
         <div class="col-md-1"></div>
-        <div class="col-md-6">
+        <div class="col-md-10">
 
-            {% for article in article_list %}
             <div class="row">
-                <div class="col-md-12">
+                {% for article in article_list %}
+                <div class="col-md-4 col-xs-6">
                     <div class="thumbnail">
                         <a href="/news/{{ article.pk}}"><img src="{% static 'img/'%}{{article.title_img}}"
 
                                                              alt="..." height="100%" width="100%"></a>
                         <div class="caption">
-                            <h4><a href="/news/{{ article.pk}}">{{flag}}{{article.title}}</a></h4>
+                            <h6><a href="/news/{{ article.pk}}">{{flag}}{{article.title}}</a></h6>
 
                             <span class="label label-info">{{article.created_time}}</span>
 
@@ -81,8 +81,8 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
 
             <nav aria-label="...">
                 <ul class="pager">
@@ -99,7 +99,6 @@
                 </ul>
             </nav>
         </div>
-        <div class="col-md-4"></div>
         <div class="col-md-1"></div>
 
     </div>
