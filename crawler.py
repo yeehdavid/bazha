@@ -9,8 +9,13 @@ from crawler.langconv import *
 import time
 from bs4 import BeautifulSoup
 from News.models import Article, Article_Part
-
+from PIL import Image
 #last_title = ''
+
+def ResizeImage(filein, fileout, width, height, type):
+  img = Image.open(filein)
+  out = img.resize((width, height),Image.ANTIALIAS) #resize image with high-quality
+  out.save(fileout, type)
 
 def chinese_to_gb2312(chinese):
     s = str(chinese.encode('gb18030')).replace('\\x', '')
@@ -21,10 +26,15 @@ def cht_to_chs(line):
     line.encode('utf-8')
     return line
 
-def save_img(src,name):
+def save_img(src,name,resharp = False):
     ir = requests.get(src,timeout=10)
     if ir.status_code == 200:
-        open('static/img/News/' + name + '.jpg', 'wb').write(ir.content)
+        img_path = 'static/img/News/' + name + '.jpg'
+
+        open(img_path, 'wb').write(ir.content)
+        if resharp:
+            ResizeImage(img_path, img_path, 750, 430, 'jpeg')
+
     else:
         return 0
     return 1
@@ -61,7 +71,7 @@ def save_article(url, title, title_img_src):
         if c.name == 'p':
             article_list.append(c)
 
-    if not save_img(title_img_src,title_img_name):
+    if not save_img(title_img_src,title_img_name,resharp=True):
         return
 
     A = Article(title = title, title_img = 'News/'+title_img_name +'.jpg')
