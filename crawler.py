@@ -22,7 +22,7 @@ def cht_to_chs(line):
     return line
 
 def save_img(src,name):
-    ir = requests.get(src)
+    ir = requests.get(src,timeout=10)
     if ir.status_code == 200:
         open('static/img/News/' + name + '.jpg', 'wb').write(ir.content)
     else:
@@ -38,7 +38,7 @@ def save_article(url, title, title_img_src):
     if len(a) == 1:
         return
 
-    resp = requests.get(url)
+    resp = requests.get(url,timeout=10)
     bsobj = BeautifulSoup(resp.text, 'lxml')
     article = bsobj.find_all('div',class_ = 'single-container')[0]
     divs = article.find_all('div')
@@ -83,7 +83,7 @@ def save_article(url, title, title_img_src):
 
 def test_new():
 
-    resp = requests.get('https://kenlu.net/category/news/')
+    resp = requests.get('https://kenlu.net/category/news/',timeout=10)
     bsobj = BeautifulSoup(resp.text, 'lxml')
     first_new = bsobj.find_all('div', class_='mg-col mg-col-1')[0]
     title = cht_to_chs(first_new.h2.text)
