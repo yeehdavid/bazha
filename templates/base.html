@@ -36,10 +36,10 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">
-                        <img src="{% static 'logo.png' %}" width="30", height="30" style="margin-top:-7px">
+                        <img src="{% static 'logo.png' %}" width="30" , height="30" style="margin-top:-7px">
                     </a>
                     <a class="navbar-brand" href="/">
-                    大先生鞋库
+                        大先生潮鞋
                     </a>
                 </div>
 
@@ -55,7 +55,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a data-toggle="modal" data-target="#myModal" ><img src="{% static 'weixin.ico' %}"></a></li>
+                        <li><a data-toggle="modal" data-target="#myModal"><img src="{% static 'weixin.ico' %}"></a></li>
                     </ul>
                     <form class="navbar-form navbar-right">
                         <div class="form-group">
@@ -74,24 +74,23 @@
 {% endblock main %}
 
 
-
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					详情请加微信资讯
-				</h4>
-			</div>
-			<div class="modal-body">
-				<img src="{% static 'wechat.png' %}">
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal -->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    详情请加微信资讯
+                </h4>
+            </div>
+            <div class="modal-body">
+                <img src="{% static 'wechat.png' %}" width="100%" height="100%">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
