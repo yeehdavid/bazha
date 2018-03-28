@@ -44,8 +44,8 @@ def save_article(url, title, title_img_src):
     title = title.replace('/','').replace('\\','')
     title_img_name = chinese_to_gb2312(title).replace(' ','').replace('\\','')
     article_list = []
-    a = Article.objects.filter(title = title)
-    if len(a) == 1:
+    a = Article.objects.filter(title_img = 'News/'+title_img_name +'.jpg')
+    if len(a) != 0:
         return
 
     resp = requests.get(url,timeout=10)
