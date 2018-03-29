@@ -60,16 +60,18 @@ def save_article(url, title, title_img_src):
                     a = d
             except:
                 pass
-
-    for c in a.children:
-        try:
-            if 'gallery' in c['id']:
+    try:
+        for c in a.children:
+            try:
+                if 'gallery' in c['id']:
+                    article_list.append(c)
+                    continue
+            except:
+                pass
+            if c.name == 'p':
                 article_list.append(c)
-                continue
-        except:
-            pass
-        if c.name == 'p':
-            article_list.append(c)
+    except:
+        return 
 
     if not save_img(title_img_src,title_img_name,resharp=True):
         return
