@@ -66,11 +66,11 @@
         <div class="col-md-10">
             <div class="row">
                 {% for article in article_list %}
-                <div class="col-md-4 col-xs-6" >
-                    <div class="thumbnail" >
+                <div class="col-md-4 col-xs-6">
+                    <div class="thumbnail">
                         <a href="/news/{{ article.pk}}"><img src="{% static 'img/'%}{{article.title_img}}"></a>
                         <div class="caption">
-                            <h6><a href="/news/{{ article.pk}}">{{flag}}{{article.title}}</a></h6>
+                            <h6 style="overflow: hidden;text-overflow:ellipsis;white-space:nowrap;"><a href="/news/{{ article.pk}}" >{{article.title}}</a></h6>
 
                             <span class="label label-info">{{article.created_time}}</span>
 
