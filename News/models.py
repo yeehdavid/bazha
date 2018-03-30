@@ -22,7 +22,7 @@ class Article(models.Model):
 
 class Article_Part(models.Model):
     def __str__(self):
-        return self.text, self.img
+        return self.text
     text = models.TextField(blank=True)
     img = models.ImageField(upload_to='News', blank=True)
     belong_to = models.ForeignKey(Article)
