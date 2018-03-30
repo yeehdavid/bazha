@@ -71,7 +71,7 @@ def save_article(url, title, title_img_src):
             if c.name == 'p':
                 article_list.append(c)
     except:
-        return 
+        return
 
     if not save_img(title_img_src,title_img_name,resharp=True):
         return
@@ -80,6 +80,8 @@ def save_article(url, title, title_img_src):
     A.save()
     for m,i in enumerate(article_list):
         if i.name == 'p':
+            if 'script' in str(i.text):
+                continue
             A_P = Article_Part(text=cht_to_chs(i.text), belong_to = A,order = m)
             A_P.save()
         else:
