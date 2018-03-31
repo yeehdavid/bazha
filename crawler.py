@@ -33,7 +33,7 @@ def save_img(src,name,resharp = False):
 
         open(img_path, 'wb').write(ir.content)
         if resharp:
-            ResizeImage(img_path, img_path, 750, 430, 'jpeg')
+            ResizeImage(img_path, img_path, 1200, 628, 'jpeg')
 
     else:
         return 0
