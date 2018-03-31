@@ -11,7 +11,7 @@ def index(request):
     second_one = None
     third_one = None
 
-    paginator = Paginator(article_list, 15)  # 实例化一个分页对象
+    paginator = Paginator(article_list, 12)  # 实例化一个分页对象
 
     page = request.GET.get('page')  # 获取页码
     if page == '1':
