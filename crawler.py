@@ -39,12 +39,13 @@ def save_img(src,name,resharp = False):
         return 0
     return 1
 
-def save_article(url, title, title_img_src):
+def save_article(url, title):
 
     title = title.replace('/','').replace('\\','')
     title_img_name = chinese_to_gb2312(title).replace(' ','').replace('\\','')
+
     article_list = []
-    a = Article.objects.filter(title_img = 'News/'+title_img_name +'.jpg')
+    a = Article.objects.filter(title = title)
     if len(a) != 0:
         return
 
@@ -52,6 +53,9 @@ def save_article(url, title, title_img_src):
     bsobj = BeautifulSoup(resp.text, 'lxml')
     article = bsobj.find_all('div',class_ = 'single-container')[0]
     divs = article.find_all('div')
+
+    title_img = bsobj.find('div', class_='col-sm-8 content-column')
+    img_src = title_img.find('img').get('data-src')
 
     for d in divs:
         for c in d.children:
@@ -73,7 +77,7 @@ def save_article(url, title, title_img_src):
     except:
         return
 
-    if not save_img(title_img_src,title_img_name,resharp=True):
+    if not save_img(img_src,title_img_name,resharp=True):
         return
 
     A = Article(title = title, title_img = 'News/'+title_img_name +'.jpg')
@@ -99,12 +103,12 @@ def test_new():
 
     resp = requests.get('https://kenlu.net/category/news/',timeout=10)
     bsobj = BeautifulSoup(resp.text, 'lxml')
+
     first_new = bsobj.find_all('div', class_='mg-col mg-col-1')[0]
     title = cht_to_chs(first_new.h2.text)
-
-    a_img = first_new.a.get('data-src')
     href = first_new.a.get('href')
-    save_article(url=href, title=title, title_img_src=a_img)
+
+    save_article(url=href, title=title)
 
 
 if __name__ == '__main__':
